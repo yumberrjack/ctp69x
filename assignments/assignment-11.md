@@ -1,1 +1,5 @@
+## Working Group Call
+I attended the Diversity and Inclusion call on Wednesday, May 13. You can find my name in the participant list.
 
+## Podcast
+I was interested to hear about how each of the participants in the podcase got to where they are in the CHAOSS community. I felt that there were so many differnt stories and different backgrounds for each of them, which gives me the impression that CHOASS is a very diverse community. Something that suproised me was that Matt talked about how he was hearing a seminar and mentioned it was around the time the Linux foundation was around 8 projects, which is incredible considering how many projects the Linux foundation has pumped out over the years. Its amazing how a project can literally be started, and you dont have to be hired on to just work on other peoples project. I feel that those in the CHAOSS community that were the first group to begin the project probably feel extremely rewarded seeing the project develop and the community to grow. I hope one day I can get involved with something less established where I can see the growth of the project vividly.
