@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Order</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="design.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $("#current").css("color", "pink");
+                $.ajax({
+                    url: "phpmysql/user.php",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"email": "email", "fname": "fname"},
+                    success: function(data){
+                        if(data.email != null) {
+                            $("#loggedin").html("Welcome, " + data.email + "!");
+                            $("#error").css("display", "none");
+                            $(".wrapper").css("display", "block");
+                        } else {
+                            $("#error").css("display", "block");
+                            $(".wrapper").css("display", "none");
+                            $("#loggedin").html("Not logged in!");
+                        }
+                    },
+                    error: function(error){
+                        $("#loggedin").html("Not logged in!");
+                        console.log("error");
+                    }
+                });
+            });
+            
+        </script>
+    </head>
+    <body>
+        <!--
+            navbar code adapted from w3Schools. link: https://www.w3schools.com/howto/howto_js_topnav.asp
+        -->
+        <div id="top">
+            <img id="company" src="images/logo.png" alt="custom vinyl logo">
+            <div class="nava">
+                <a class="active next" href="loginPage.html">Login/Register</a>
+                <a class="active next" href="about.html">About Us</a>
+                <a id="current" class="active next" href="order.html">Order</a>
+                <a class="active next" href="reviews.html">Reviews</a>
+                <a class="active" href="home.html">Home</a>
+            </div>
+            <h1 id="loggedin"></h1>
+        </div>
+        <div id="error" class="top">You must log in to order!</div>
+        <div class="wrapper top">
+            <div class="order">
+                <p>This is the order form to order your Custom Vinyl!<br>You must be logged in or registered to order!<br>Please fill out all the fields below.<br><br>All fields marked with * are required.</p>
+            </div>
+        <!--
+            code for bootstrap forms adapted from https://www.w3schools.com/bootstrap/bootstrap_forms.asp
+        -->
+            <div class="order">
+                <form id="orderform" action="phpmysql/order.php" method="post">
+                    
+                    <input type="hidden" name="action" value="do_order">
+                    
+                    <fieldset>
+                        <legend>Vinyl Customization</legend>
+                        <div class="form-group">
+                            <label for="title" class="label-control">Enter title of vinyl (i.e. Collin's Vinyl, I Have A Wee Bit of Rage, Timeless Love) *</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interests">Enter interests of person vinyl is for in comma seperated list: *
+                            </label>
+                            <input type="text" class="form-control" id="interests" name="interests" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="quote1">Enter optional quote you would like artist to include on cover:</label>
+                            <textarea id="quote1" class="form-control" name="quote1"></textarea>
+                            <label for="quote2">Enter optional second quote:
+                            </label>
+                            <textarea id="quote2" class="form-control" name="quote2"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="songs">Enter songs: (Each side can hold 10 minutes worth of music, 20 mins total) (First four songs required)</label>
+                            <div class="form-row">
+                                <label for="songname1" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname1" required>
+                                <label for="artist1" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist1" name="artist1" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="songname2" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname2" name="songname2">
+                                <label for="artist2" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist2" name="artist2" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="songname3" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname3" name="songname3" required>
+                                <label for="artist3" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist3" name="artist3" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="songname4" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname4" name="songname4" required>
+                                <label for="artist4" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist4" name="artist4" required>
+                            </div>
+                            <div class="form-row">
+                                <label for="songname5" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname5" name="songname5">
+                                <label for="artist5" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist5" name="artist5">
+                            </div>
+                            <div class="form-row">
+                                <label for="songname6" class="label-control col-">Song Name:</label>
+                                <input type="text" class="form-control col-4" id="songname6" name="songname6">
+                                <label for="artist6" class="label-control col-">Artist:</label>
+                                <input type="text" class="form-control col-3" id="artist6" name="artist6">
+                            </div>
+                        </div>
+                    </fieldset> 
+                    
+                    <button type="submit" id="submit">Submit</button>
+                    
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

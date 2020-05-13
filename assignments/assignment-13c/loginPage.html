@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login/Register</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="design.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $("#current").css("color", "pink");
+                    
+                $.ajax({
+                    url: "phpmysql/user.php",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"email": "email", "fname": "fname"},
+                    success: function(data){
+                        if(data.email != null) {
+                            $("#loggedin").html("Welcome, " + data.email + "!");
+                        } else {
+                            $("#loggedin").html("Not logged in!");
+                        }
+                    },
+                    error: function(error){
+                        $("#loggedin").html("Not logged in!");
+                        console.log("error");
+                    }
+                }); document.getElementById("regbutton").addEventListener("click", function(event){
+                    document.getElementById("passnonmatch").style.display = "none";
+                    var pass = document.getElementById("passwordreg").value;
+                    var confirmPass = document.getElementById("confirmpasswordreg").value;
+                    console.log(pass);
+                    console.log(confirmPass);
+                    if(pass != confirmPass) {
+                        event.preventDefault(); document.getElementById("passnonmatch").style.display = "block";
+                }
+            });
+            });
+            function openLogin() {
+                document.getElementById("loginform").style.display = "block";
+                document.getElementById("registrationform").style.display = "none";
+            }
+            function openRegistration() {
+                document.getElementById("loginform").style.display = "none";
+                document.getElementById("registrationform").style.display = "block";
+            }
+        </script>
+    </head>
+    <body>
+        <!--
+            navbar code adapted from w3Schools. link: https://www.w3schools.com/howto/howto_js_topnav.asp
+        -->
+        <div id="top">
+            <img id="company" src="images/logo.png" alt="custom vinyl logo">
+            <div class="nava">
+                <a id="current" class="active next" href="loginPage.html">Login/Register</a>
+                <a class="active next" href="about.html">About Us</a>
+                <a class="active next" href="order.html">Order</a>
+                <a class="active next" href="reviews.html">Reviews</a>
+                <a class="active" href="home.html">Home</a>
+            </div>
+            <h1 id="loggedin"></h1>
+        </div>
+        <!--
+            code for bootstrap forms adapted from https://www.w3schools.com/bootstrap/bootstrap_forms.asp
+        -->
+        <div class="wrapper top group">
+            <button type="button" onclick="openLogin()">Login</button>
+            <span>or</span>
+            <button type="button" onclick="openRegistration()">Register</button>
+            <br><br><span>All fields marked with * are required.</span>
+            <br><span>You must login to fill out an order.</span>
+            <form id="loginform" class="form-horizontal login" action="phpmysql/login.php" method="post">
+                
+                <input type="hidden" name="action" value="do_login">
+                
+                <div class="form-row">
+                    <label for="emaillogin" class="control-label col-sm-2">Email:</label>
+                    <div class="col-sm-9">
+                        <input id="emaillogin" type="text" class="form-control" name="emaillogin" placeholder="Enter email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="passwordlogin" class="control-label col-sm-2">Password:</label>
+                    <div class="col-sm-9">
+                        <input id="passwordlogin" type="password" class="form-control" name="passwordlogin" placeholder="Enter password" required>
+                    </div>
+                </div>
+                <button class="submit" type="submit">Login</button>
+            </form>
+            <form id="registrationform" class="login" action="phpmysql/login.php" method="post">
+                
+                <input type="hidden" name="action" value="do_registration">
+                
+                <fieldset>
+                    <legend>Email/Password</legend>
+                    <p id="passnonmatch" class="error">PASSWORDS DO NOT MATCH</p>
+                <div class="form-row">
+                    <label for="emailreg" class="control-label col-sm-2">Email:*</label>
+                    <div class="col-sm-9">
+                        <input id="emailreg" type="text" class="form-control" name="emailreg" placeholder="Enter email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="passwordreg" class="control-label col-sm-2">Password:*</label>
+                    <div class="col-sm-9">
+                        <input id="passwordreg" type="password" class="form-control" name="passwordreg" placeholder="Enter password" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="confirmpasswordreg" class="control-label col-sm-2">Confirm Password:*</label>
+                    <div class="col-sm-9">
+                        <input id="confirmpasswordreg" type="password" class="form-control" name="confirmpasswordreg" placeholder="Enter password" required>
+                    </div>
+                </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Shipping Information</legend>
+                <div class="form-row">
+                    <label for="fname" class="control-label col-sm-2">First name:*</label>
+                    <div class="col-sm-3">
+                        <input id="fname" type="text" class="form-control" name="fname" placeholder="Enter first name" required>
+                    </div>
+                    <label for="lname" class="control-label col-sm-2">Last name:*</label>
+                    <div class="col-sm-4">
+                        <input id="lname" type="text" class="form-control" name="lname" placeholder="Enter last name" required> 
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="address1" class="control-label col-sm-2">Address 1:*</label>
+                    <div class="col-sm-9">
+                        <input id="address1" class="form-control" name="address1" placeholder="Enter address line 1" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="address2" class="control-label col-sm-2">Address 1:</label>
+                    <div class="col-sm-9">
+                        <input id="address2" class="form-control" name="address2" placeholder="Enter address line 2 (Apt, Suite, etc.)">
+                    </div>
+                </div>
+                <div class="form-row">
+                    <label for="city" class="control-label col-sm-2">City:*</label>
+                    <div class="col-sm-3">
+                        <input id="city" class="form-control" name="city" placeholder="Enter city" required>
+                    </div>
+                    <label for="state" class="control-label col-sm-1">State:*</label>
+                    <div class="col-sm-2">
+                        <input id="state" class="form-control" name="state" placeholder="Enter state" required>
+                    </div>
+                    <label for="zip" class="control-label col-sm-1">Zip:*</label>
+                    <div class="col-sm-2">
+                        <input id="zip" class="form-control" name="zip" placeholder="Enter zipcode" required>
+                    </div>
+                </div>
+                </fieldset>
+                <button id="regbutton" class="submit" type="submit">Register</button>
+            </form>
+        </div>
+    </body>
+</html>

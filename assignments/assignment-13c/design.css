@@ -1,0 +1,236 @@
+body {
+    background-image: url(images/sea.jpg);
+    font-family: 'Playfair Display', serif !important;
+}
+#top {
+    height: 13em;
+    width: 100%;
+}
+.nava {
+    background-color: palevioletred;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    border-bottom: .4em solid whitesmoke;
+    border-left: .4em solid whitesmoke;
+}
+.nava a {
+    float: right;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 20px;
+    font-family: monospace;
+}
+.nava a.next {
+    border-left: .1em solid black;
+}
+.nava a.active:hover {
+    background-color: whitesmoke;
+    color: black;
+    text-decoration: none;
+}
+.nava a.active {
+    color: whitesmoke;
+}
+#company {
+    float: left;
+    height: 12em;
+    width: 12em;
+}
+#exampleWrapper {
+    display: block;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    border-top: .4em solid whitesmoke;
+    border-bottom: .4em solid whitesmoke;
+    color: whitesmoke;
+}
+#exampleWrapper h1 {
+    margin: .2em;
+}
+.left {
+    float: left;
+    clear:left;
+    height: 100%;
+    width: 48%;
+    padding: 1%;
+}
+.right {
+    float: right;
+    clear: right;
+    height: 100%;
+    width: 48%;
+    padding: 1%;
+}
+.example {
+    max-height: 70%;
+    max-width: 70%;
+    border: .4em solid palevioletred;
+    box-shadow: .4em .5em .8em black;
+}
+p {
+    font-size: 1.2em;
+    color: whitesmoke;
+}
+.vinylreview span {
+    font-size: 1.7em;
+    color: whitesmoke;
+    font-style: italic;
+}
+.wrapperflexbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: .4em solid whitesmoke;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.wrapperflexbox.top {
+    border-top: .4em solid whitesmoke;
+}
+.wrapperflexbox img {
+    max-width: 24em;
+    margin: 1.5em;
+}
+.wrapperflexbox .right {
+    padding: 2em;
+    width: 30em;
+}
+.left #vinyl {
+    width: 90%;
+    padding: .3em;
+    align-self: center;
+    text-align: center;
+}
+.right #info {
+    text-align: center;
+}
+button#order {
+    width: 8em;
+    height: 3em;
+    align-self: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 1em
+}
+.reviewflexbox.top {
+    border-top: .4em solid whitesmoke
+}
+.reviewflexbox {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: .4em solid whitesmoke;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+.vinylpicture img {
+    width: 24em;
+    border: .4em solid palevioletred;
+    margin: 1.5em;
+}
+.vinylreview {
+    padding: 2em;
+    width: 30em;
+}
+.wrapper {
+    padding: 1em;
+    display: block;
+    flex-wrap: wrap;
+    border-bottom: .4em solid whitesmoke;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: whitesmoke;
+}
+.wrapper.top {
+    border-top: .4em solid whitesmoke;
+}
+#orderform {
+    padding: 1.5em;
+    text-align: left;
+}
+.wrapper p {
+    font-size: 1.4em;
+    color: white;
+}
+.wrapper .order {
+    max-width: 100%;
+    margin: 1em;
+}
+legend {
+    font-size: 2em;
+    font-weight: bold;
+}
+#orderform label {
+    font-size: 1.2em;
+}
+.wrapper button {
+    width: 7em;
+    height: 3em;
+    border-radius: 1em;
+}
+.login {
+    display: none;
+    margin: 1em;
+    padding: 1em;
+    text-align: left;
+}
+.login label {
+    align-self: center;
+    text-align: right;
+    font-size: 1.3em;
+}
+button.submit {
+    margin-top: 1em;
+    margin-right: 8.3%;
+    float: right;
+}
+.wrapper .error {
+    color: red;
+    text-align: center;
+    display: none;
+}
+.spaced {
+    margin: 2em 3em 1em 3em;
+}
+.spaced h1 {
+    font-size: 4em;
+    color: black;
+    font-weight: bold;
+}
+.spaced p {
+    color: black;
+}
+.spaced h2 {
+    margin: 2em 3em 1em 3em;
+    font-size: 2.5em;
+}
+iframe {
+    border: .4em solid palevioletred;
+    box-shadow: .4em .5em .8em black;
+}
+#loggedin {
+    margin: 3.5em 3em 2em 3em;
+    float: right;
+    font-weight: bold;
+    font-size: 2em;
+}
+#error {
+    display: none;
+    color: black;
+    font-size: 2.5em;
+    font-weight: bold;
+    justify-content: center;
+}
+.group:after {
+    content: "";
+    clear: both;
+    display: table;
+}
+

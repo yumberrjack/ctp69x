@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>About Us</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="design.css">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $("#current").css("color", "pink");
+                
+                $.ajax({
+                    url: "phpmysql/user.php",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"email": "email", "fname": "fname"},
+                    success: function(data){
+                        if(data.email != null) {
+                            $("#loggedin").html("Welcome, " + data.email + "!");
+                        } else {
+                            $("#loggedin").html("Not logged in!");
+                        }
+                    },
+                    error: function(error){
+                        $("#loggedin").html("Not logged in!");
+                        console.log("error");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--
+            navbar code adapted from w3Schools. link: https://www.w3schools.com/howto/howto_js_topnav.asp
+        -->
+        <div id="top">
+            <img id="company" src="images/logo.png" alt="custom vinyl logo">
+            <div class="nava">
+                <a class="active next" href="loginPage.html">Login/Register</a>
+                <a id="current" class="active next" href="about.html">About Us</a>
+                <a class="active next" href="order.html">Order</a>
+                <a class="active next" href="reviews.html">Reviews</a>
+                <a class="active" href="home.html">Home</a>
+            </div>
+            <h1 id="loggedin"></h1>
+        </div>
+        <div class="wrapper top">
+            
+            <div class="spaced">
+                <h1>Custom Vinyl</h1>
+                <h2>Our Company</h2>
+                <p>Custom Vinyl was founded by Collin Pounds and Sydney Bennett in May of 2020. The idea to create custom vinyls with handmade one-of-a-kind artwork came from Sydney. Originally created as a final project for his Web Application Development class, Collin ran with the concept of the store and built upon it. Now here we are, ready to provide you with the best gift to your signicant other, best friend, parent, or anyone else under the sun! We love creating these one-of-a-kind vinyls with personally crafted artwork made by our profesionals, and all of us here at Custom Vinyl are here to make this experience as unique and special as possible. We built this business from the ground up, as something we could all passionately support. Our artists love to be using thier amazing talents, and Sydney and I absolutely love hearing how happy our customers are with the end product. We guarantee you'll love the process just as much as us, and you can't imagine the suprise and wonder the recipeint of these custom pieces will show on thier face!</p>
+            </div>
+            <div class="spaced">
+                <h2>How Vinyls are Made</h2>
+                <iframe width="660" height="415" src="https://www.youtube.com/embed/NPreRQbRWcc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </div>
+    </body>
+</html>

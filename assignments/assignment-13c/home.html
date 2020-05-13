@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Custom Vinyl</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="design.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $("#current").css("color", "pink");
+                $("#order").click(function() {
+                    window.location = "order.html";
+                });
+                $.ajax({
+                    url: "phpmysql/user.php",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"email": "email", "fname": "fname"},
+                    success: function(data){
+                        if(data.email != null) {
+                            $("#loggedin").html("Welcome, " + data.email + "!");
+                        } else {
+                            $("#loggedin").html("Not logged in!");
+                        }
+                    },
+                    error: function(error){
+                        $("#loggedin").html("Not logged in!");
+                        console.log("error");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--
+            navbar code adapted from w3Schools. link: https://www.w3schools.com/howto/howto_js_topnav.asp
+        -->
+        <div id="top">
+            <img id="company" src="images/logo.png" alt="custom vinyl logo">
+            <div class="nava">
+                <a class="active next" href="loginPage.html">Login/Register</a>
+                <a class="active next" href="about.html">About Us</a>
+                <a class="active next" href="order.html">Order</a>
+                <a class="active next" href="reviews.html">Reviews</a>
+                <a id="current" class="active" href="home.html">Home</a>
+            </div>
+            <h1 id="loggedin"></h1>
+        </div>
+        <div id="exampleWrapper" class="group">
+            <div class="left">
+                <img class="example" src="images/sydsrecordfront.PNG" alt="Sydney's record design and songs list">
+                <h1>Front</h1>
+                <p>The front of the album cover will be created by one of our talented artists with a custom design based on the information you provide us with while ordering! </p>
+            </div>
+            <div class="right">
+                <img class="example" src="images/sydsrecordback.PNG" alt="Sydney's songs list">
+                <h1>Back</h1>
+                <p>The back of the album cover will show the list of songs on the album and will also include some artwork reflective of the information you provide while ordering!</p>
+            </div>
+        </div>
+        <div class="wrapperflexbox">
+            <div class="left">
+               <img id="vinyl" src="images/vinyl.png" alt="generic vinyl"> 
+            </div>
+            <div class="right">
+                <p id="info">The custom vinyl includes 20 minutes (10 minutes on each side) of the songs you choose for yourself, or as a gift to a  special friend. The vinyl can come in black, white, or transparent, and will be sure to amaze whoever you give it to!</p>
+                <button id="order">Order Now!</button>
+            </div>
+        </div>
+    </body>
+</html>

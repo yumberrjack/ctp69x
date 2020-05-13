@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Reviews</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="design.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous">
+        </script>
+        <script>
+            $(document).ready(function() {
+                $("#current").css("color", "pink");
+                
+                $.ajax({
+                    url: "phpmysql/user.php",
+                    type: "GET",
+                    dataType: "json",
+                    data: {"email": "email", "fname": "fname"},
+                    success: function(data){
+                        if(data.email != null) {
+                            $("#loggedin").html("Welcome, " + data.email + "!");
+                        } else {
+                            $("#loggedin").html("Not logged in!");
+                        }
+                    },
+                    error: function(error){
+                        $("#loggedin").html("Not logged in!");
+                        console.log("error");
+                    }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <!--
+            navbar code adapted from w3Schools. link: https://www.w3schools.com/howto/howto_js_topnav.asp
+        -->
+        <div id="top">
+            <img id="company" src="images/logo.png" alt="custom vinyl logo">
+            <div class="nava">
+                <a class="active next" href="loginPage.html">Login/Register</a>
+                <a class="active next" href="about.html">About Us</a>
+                <a class="active next" href="order.html">Order</a>
+                <a id="current" class="active next" href="reviews.html">Reviews</a>
+                <a class="active" href="home.html">Home</a>
+            </div>
+            <h1 id="loggedin"></h1>
+        </div>
+        <div class="reviewflexbox top">
+            <div class="vinylpicture">
+                <img src="images/ryanrecord1front.PNG" alt="cadilac vinyl">
+            </div>
+            <div class="vinylpicture">
+                <img src="images/ryanrecord1back.PNG" alt="flaming tire tracks and song list">
+            </div>
+            <div class="vinylreview">
+                <p>"This vinyl is so unique and special to me. I have quite the collection at home and this vinyl is by far my favorite! I cannot express how amazing this company was to work with to create this one-of-a-kind piece of art!"</p>
+                <span>-Ryan</span>
+            </div>     
+        </div>
+        <div class="reviewflexbox">
+            <div class="vinylpicture">
+                <img src="images/ryanrecord2front.PNG" alt="bear with sunglasses">
+            </div>
+            <div class="vinylpicture">
+                <img src="images/ryanrecord2back.PNG" alt="bear spewing rainbow light">
+            </div>
+            <div class="vinylreview">
+                <p>"I worked with Custom Vinyl to create this amazing piece for my best friend. He couldnt believe something like this was even possible! He absolutely loved the custom made album art and was ecsatic to have a vinyl with such a variety of his favorite artists and songs!"</p>
+                <span>-Ryan</span>
+            </div>
+        </div>
+        <div class="reviewflexbox">
+            <div class="vinylpicture">
+                <img src="images/sydsrecordfront.PNG" alt="painted sunflower">
+            </div>
+            <div class="vinylpicture">
+                <img src="images/sydsrecordback.PNG" alt="faded worldmap">
+            </div>
+            <div class="vinylreview">
+                <p>"Not only do you get to choose what songs this vinyl includes on it, but Custom Vinyl works with professional artists to bring you album art specifically designed to include artwork based on your input when ordering! This vinyl made an amazing gift to my girlfriend for our anniversary. She couldn't believe how thoughtful of a gift it was!</p>
+                <span>-Collin</span>
+            </div>
+        </div>
+    </body>
+</html>
